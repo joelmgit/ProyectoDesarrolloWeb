@@ -4,10 +4,16 @@
  */
 package com.example.service;
 
+import com.example.entity.Category;
+import java.util.List;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Joel Mora
  */
+@Service
 public interface ICategoryService {
-    
+    public List<Category> getAllCategories();
+    public Category getcategoryById(long id);
 }

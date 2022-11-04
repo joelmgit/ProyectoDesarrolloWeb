@@ -4,10 +4,16 @@
  */
 package com.example.repository;
 
+import com.example.entity.Video;
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Joel Mora
  */
-public interface VideoRepository {
-    
+@Repository
+public interface VideoRepository extends CrudRepository<Video,Long> {
+    public List<Video> finfByCategoryNameAll(String name);
 }

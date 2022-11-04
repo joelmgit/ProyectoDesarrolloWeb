@@ -4,10 +4,15 @@
  */
 package com.example.repository;
 
+import com.example.entity.Category;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Joel Mora
  */
-public interface CategoryRepository {
+@Repository
+public interface CategoryRepository extends CrudRepository<Category,Long> {
     
 }
