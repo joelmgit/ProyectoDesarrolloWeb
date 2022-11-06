@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public interface IVideoService {
     public List<Video> getAllVideos();
     public Video getVideoById(long id);
-    public List<Video> getVideosByCategory(String category);
+    public List<Video> getVideosByCategory(long id);
     public void saveVideo(Video video);
     public void deleteVideo(long id);
 }
