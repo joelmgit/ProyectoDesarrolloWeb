@@ -4,10 +4,19 @@
  */
 package com.example.service;
 
+import com.example.entity.Video;
+import java.util.List;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Joel Mora
  */
+@Service
 public interface IVideoService {
-    
+    public List<Video> getAllVideos();
+    public Video getVideoById(long id);
+    public List<Video> getVideosByCategory(String category);
+    public void saveVideo(Video video);
+    public void deleteVideo(long id);
 }

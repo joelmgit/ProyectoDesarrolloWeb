@@ -24,13 +24,60 @@ public class Video implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    private String nombre;
-    private String link;
-    private String apellido2;
-    private String telefono;
-    private String email;
+    private String name;
+    private String video_source;
+    private String description;
+    private String author;
     
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVideo_source() {
+        return video_source;
+    }
+
+    public void setVideo_source(String video_source) {
+        this.video_source = video_source;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }           
 }
