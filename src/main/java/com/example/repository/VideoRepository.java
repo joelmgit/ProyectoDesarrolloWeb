@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface VideoRepository extends CrudRepository<Video,Long> {
-    public List<Video> finfByCategoryNameAll(String name);
+    public List<Video> findByCategoryName(String name);
 }

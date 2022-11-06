@@ -33,7 +33,7 @@ public class VideoService implements IVideoService{
     @Override
     public List<Video> getVideosByCategory(String category) {
         
-        return (List<Video>)videoRepository.finfByCategoryNameAll(category);
+        return (List<Video>)videoRepository.findByCategoryName(category);
         
 //        List<Video> allVideos = (List<Video>)videoRepository.findAll();
 //        ArrayList <Video> filteredList = new ArrayList();

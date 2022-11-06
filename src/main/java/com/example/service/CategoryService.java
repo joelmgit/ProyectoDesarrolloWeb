@@ -8,11 +8,13 @@ import com.example.entity.Category;
 import com.example.repository.CategoryRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Joel Mora
  */
+@Service
 public class CategoryService implements ICategoryService{
 
     @Autowired
@@ -24,7 +26,7 @@ public class CategoryService implements ICategoryService{
     }
 
     @Override
-    public Category getcategoryById(long id) {
+    public Category getCategoryById(long id) {
         return categoryRepository.findById(id).orElse(null);
     }
     
