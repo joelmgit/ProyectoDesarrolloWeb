@@ -3,13 +3,46 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
-    <head>
-        <title>Streming - detalle de video</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="components/skeleton::head"/>
     <body>
-        <div>VIDEO DETAIL</div>
+        <header th:replace="components/skeleton::header"/>   
+        <div class="container py-5">     
+            <div class="container">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" th:src="${video.getVideo_source}" allowfullscreen></iframe>
+                    </div>
+                    <div class="my-4">
+                        <p class="h2" th:text="${video.getName}"/>  
+                        <div class=" container my-4 p-4 text-bg-dark rounded">
+                            <p class="h5" th:text="#{video.author_title} + ': ' + ${video.getAuthor}"/>  
+                            <p class="h5" th:text="#{video.description_title} + ': ' + ${video.getDescription}"/>  
+                            <p class="h5" th:text="#{video.category_title} + ': ' + ${video.getCategory.getName}"/>  
+                        </div>
+                        
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <p class="h1" th:text="#{video.related_category_title}"/>         
+                    <div class="list-group col-md" th:each="video : ${relatedVideosList}">
+                        <a th:href="@{/video/{id}(id=${video.getId})}" class="list-group-item list-group-item-action p-4 my-2" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1" th:text="${video.getName}"/>
+                                <small th:text="${video.getCategory.getName}"/>
+                            </div>
+                            <p class="mb-1" th:text="${(video.getDescription.length > 100) ? video.getDescription.substring(0,100) + '...' : video.getDescription}"/>
+                            <small th:text="${video.getAuthor}"></small>
+                        </a>
+                    </div>   
+                  </div>
+                </div>
+              </div>       
+            
+            
+        </div>         
+        <footer th:replace="components/skeleton::footer"/>   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>

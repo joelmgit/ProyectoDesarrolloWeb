@@ -39,9 +39,11 @@ public class VideoController {
         return "videos";
     }
     
-    @GetMapping("/video/{id}")
-    public String video(@PathVariable("id") Long videoId, Model model){
+    @GetMapping("/video/{videoId}")
+    public String video(@PathVariable("videoId") Long videoId, Model model){
         Video video = videoService.getVideoById(videoId);
+        List<Video> relatedVideos = videoService.getVideosByCategory(video.getCategory().getId());
+        model.addAttribute("relatedVideosList", relatedVideos);
         model.addAttribute("video", video);
         return "videoDetail";
     }
