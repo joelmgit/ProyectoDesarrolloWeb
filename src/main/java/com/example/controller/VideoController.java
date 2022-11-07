@@ -33,6 +33,8 @@ public class VideoController {
     @GetMapping("/")
     public String index(Model model){
         List<Video> videosList = videoService.getAllVideos();
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         model.addAttribute("videosList", videosList);
         return "videos";
     }
@@ -43,18 +45,13 @@ public class VideoController {
         model.addAttribute("video", video);
         return "videoDetail";
     }
-        
-    @GetMapping("/categories")
-    public String categories(Model model){
-        List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("categories", categories);
-        return "categories";
-    }
     
-    @GetMapping("/categories/{category}")
-    public String videosCategory(@PathVariable("category") String category, Model model){
-        List<Video> videos = videoService.getVideosByCategory(category);
-        model.addAttribute("videos", videos);
+    @GetMapping("/categories/{id}")
+    public String videosCategory(@PathVariable("id") long id, Model model){
+        List<Video> videos = videoService.getVideosByCategory(id);
+        Category categoryDetail = categoryService.getCategoryById(id);
+        model.addAttribute("videosList", videos);
+        model.addAttribute("category", categoryDetail);
         return "videoCategory";
     }    
     

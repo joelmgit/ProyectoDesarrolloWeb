@@ -15,5 +15,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ICategoryService {
     public List<Category> getAllCategories();
-    public Category getcategoryById(long id);
+    public Category getCategoryById(long id);
 }

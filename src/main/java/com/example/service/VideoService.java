@@ -6,8 +6,8 @@ package com.example.service;
 
 import com.example.entity.Video;
 import com.example.repository.VideoRepository;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,18 +32,10 @@ public class VideoService implements IVideoService{
     }
     
     @Override
-    public List<Video> getVideosByCategory(String category) {
+    public List<Video> getVideosByCategory(long id) {
         
-        return (List<Video>)videoRepository.finfByCategoryNameAll(category);
+        return (List<Video>)videoRepository.findByCategoryId(id);
         
-//        List<Video> allVideos = (List<Video>)videoRepository.findAll();
-//        ArrayList <Video> filteredList = new ArrayList();
-//        for(Video video : allVideos){
-//            if(video.getCategory().getName().equals(category)){
-//                filteredList.add(video);
-//            }
-//        }
-//        return filteredList;
     }
 
     @Override
