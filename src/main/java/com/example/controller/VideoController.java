@@ -38,6 +38,11 @@ public class VideoController {
         model.addAttribute("videosList", videosList);
         return "videos";
     }
+
+    @GetMapping("/contact")
+    public String contact(Model model){
+        return "contact";
+    }
     
     @GetMapping("/video/{videoId}")
     public String video(@PathVariable("videoId") Long videoId, Model model){
@@ -76,6 +81,11 @@ public class VideoController {
     
     @PostMapping("/save")
     public String saveVideo(@ModelAttribute Video video){
+        if(video.getVideo_source().contains("watch?v=")){
+            video.setVideo_source(video.getVideo_source().replace("watch?v=", "embed/"));
+        }else{
+            video.setVideo_source(video.getVideo_source().replace("youtu.be/", "www.youtube.com/embed/"));
+        }
         videoService.saveVideo(video);
         return "redirect:/";
     }
