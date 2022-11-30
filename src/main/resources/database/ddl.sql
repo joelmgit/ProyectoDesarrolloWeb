@@ -18,15 +18,19 @@ create table video(
 );
 
 
-create table user(
+create table streaming_user(
 	id int not null primary key auto_increment,
 	username varchar(100) not null,
-	password varchar(100) not null,
+	password varchar(255) not null,
+	active int not null,
+	roles varchar(100) not null,
+	permissions varchar(100) not null,
 	email varchar(100) not null,
-	name varchar(100) not null
+	name varchar(100) not null,
+	surname varchar(100) not null
 );
 
-insert into category (name) values 
+insert into category (name) values
 	('Peliculas'),
 	('Animación'),
 	('Autos'),
@@ -76,7 +80,7 @@ insert into video(category_id, video_source, name, description, author) values
 	(13, 'https://www.youtube.com/embed/ra0QjuGlk7Y', 'Versión Completa. “La educación es un arma muy importante para la autoestima”. Dr. Valentín Fuster', 'Valentín Fuster Carulla es internacionalmente reconocido como uno de los médicos y promotores de la educación de la salud más prestigiosos del mundo.', 'Aprendemos Juntos 2030'),
 	(14, 'https://www.youtube.com/embed/iW9hp_Y-PdU', 'SCIENCE AND TECHNOLOGY: What are they and what are their DIFFERENCES? (with EXAMPLES)', 'Science and technology; we explain what they consist of, their characteristics, their differences and we give several examples.', 'Lifeder Education');
 
-insert into user(username, password, email, name) values
-	('joelm', 'Joel123#', 'joelm.01@gmail.com', 'Joel Mora'),
-	('carlosmp', 'Carlos123#', 'carlos.01@gmail.com', 'Carlos Meneses'),
-	('pablot5', 'Pablito123#', 'pablo_lolo@gmail.com', 'Pablo Lopez');
+insert into streaming_user(username, password, active, roles, permissions, email, name, surname) values
+('joelm', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'joelm.01@gmail.com', 'Joel', 'Mora'),
+('carlosmp', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'carlos.01@gmail.com', 'Carlos', 'Meneses'),
+('pablot5', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'pablo_lolo@gmail.com', 'Pablo', 'Lopez');
