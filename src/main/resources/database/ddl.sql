@@ -18,15 +18,19 @@ create table video(
 );
 
 
-create table user(
+create table streaming_user(
 	id int not null primary key auto_increment,
 	username varchar(100) not null,
-	password varchar(100) not null,
+	password varchar(255) not null,
+	active int not null,
+	roles varchar(100) not null,
+	permissions varchar(100) not null,
 	email varchar(100) not null,
-	name varchar(100) not null
+	name varchar(100) not null,
+	surname varchar(100) not null
 );
 
-insert into category (name) values 
+insert into category (name) values
 	('Peliculas'),
 	('Animación'),
 	('Autos'),
@@ -54,10 +58,10 @@ insert into video(category_id, video_source, name, description, author) values
 	(3, 'https://www.youtube.com/embed/RXzr7g-N0-A', 'Fabirca un choce eléctrico casero', 'Buenas amigos y amigas, en este vídeo os enseñare a cómo hacer un coche elétrico casero.', 'InventorTV'),
 	(4, 'https://www.youtube.com/embed/0Th6L81m8YE', 'Requiem KV 626: Lacrimosa', 'La Misa de Réquiem en re menor, K. 626, es una misa de Wolfgang Amadeus Mozart, basada en los textos latinos para el réquiem, es decir, el acto litúrgico católico celebrado tras el fallecimiento de una persona. Se trata de la decimonovena y última misa escrita por Mozart, que murió en 1791, antes de terminarla.', 'Wolfgang Amadeus Mozart'),
 	(4, 'https://www.youtube.com/embed/mGQLXRTl3Z0', 'Suite No1', 'Tras estos compases (33-38) se libera parte de la tensión acumulada y el movimiento acaba de forma brillante con un amplio acorde. La allemande (4/4) posee equilibrio en las proporciones y una escritura limpia y ligera, poco usual en las allemandes de Bach.', 'Mischa Maisky'),
-	(4, 'https://www.youtube.com/embed/U6fPNxPGTbk', 'SINFONIA INDIA de Carlos Chavez Dirige G Dudamel', 'Sinfonía india es la Sinfonía núm. 2 de Carlos Chávez, compuesta entre 1935 y 1936. En un solo movimiento, sus secciones siguen, sin embargo, el patrón tradicional de una sinfonía de tres movimientos. El título hace alusión al hecho de que el material temático consta de tres melodías provenientes de tribus nativas americanas del norte de México. La sinfonía es la composición más popular de Chávez.', 'G Dudamel'),\
+	(4, 'https://www.youtube.com/embed/U6fPNxPGTbk', 'SINFONIA INDIA de Carlos Chavez Dirige G Dudamel', 'Sinfonía india es la Sinfonía núm. 2 de Carlos Chávez, compuesta entre 1935 y 1936. En un solo movimiento, sus secciones siguen, sin embargo, el patrón tradicional de una sinfonía de tres movimientos. El título hace alusión al hecho de que el material temático consta de tres melodías provenientes de tribus nativas americanas del norte de México. La sinfonía es la composición más popular de Chávez.', 'G Dudamel'),
 	(5, 'https://www.youtube.com/embed/MaorpnopNA4', 'Nombres de animales', 'Aprende sobre los animales con este video.', 'Safari kids'),
 	(5, 'https://www.youtube.com/embed/ga9tXF4Qm2o', 'GRANDES Y PEQUEÑOS | Los extremos de la naturaleza', 'Ya sea en el reino animal o en el mundo de las plantas, nuestra Tierra está habitada por formas de vida tanto grandes como pequeñas. Enormes ballenas azules, de más de 30 metros de longitud, se mueven a la deriva por los océanos, mientras que minúsculos caballitos de mar pigmeos se refugian de las fuertes corrientes en las frágiles ramas de los arrecifes de coral.', 'Ciencia y cultura'),
-	(6, 'https://www.youtube.com/embed/y2E-NE7Mx1U', 'Barcelona chocará con Cristiano y el United en octavos de UEL. Otra prueba para Xavi | Exclusivos', 'Realizado el sorteo para los octavos de final de la UEFA Europa League, el Barcelona tendrá que regresar, tres años después, a Old Trafford para enfrentar al Manchester United en la ronda de play-off de la Europa League. El partido de ida se disputará en el Camp Nou el 16 de febrero de 2023 y una semana después se jugará la vuelta en Inglaterra. Carolina Guillén, Moisés Llorens, Rodrigo Fáez y Gemma Soler analizan cómo quedaron conformados los cruces. #Exclusivos #Barcelona #ManchesterUnited | ESPN Deportes'. 'ESPN Deportes'),
+	(6, 'https://www.youtube.com/embed/y2E-NE7Mx1U', 'Barcelona chocará con Cristiano y el United en octavos de UEL. Otra prueba para Xavi | Exclusivos', 'Realizado el sorteo para los octavos de final de la UEFA Europa League, el Barcelona tendrá que regresar, tres años después, a Old Trafford para enfrentar al Manchester United en la ronda de play-off de la Europa League. El partido de ida se disputará en el Camp Nou el 16 de febrero de 2023 y una semana después se jugará la vuelta en Inglaterra. Carolina Guillén, Moisés Llorens, Rodrigo Fáez y Gemma Soler analizan cómo quedaron conformados los cruces. #Exclusivos #Barcelona #ManchesterUnited | ESPN Deportes', 'ESPN Deportes'),
 	(6, 'https://www.youtube.com/embed/_B-SkeCykMM', 'Final | Curling | Dobles mixto - Beijing 2022', 'Te traemos la gran final de Curling en la rama de dobles mixto de los Juegos Olímpicos de Invierno Beijing 2022 desde el Centro Acuático Nacional, evento que podrás ver en vivo y en directo por MARCA Claro y Claro Sports.', 'Claro'),
 	(6, 'https://www.youtube.com/embed/jXCgE7JpvlY', 'Colombia se lleva el triunfo en un segundo tiempo de terror para la selección mexicana', 'Concluyó la fase de preparación de la Selección mexicana en el continente americano. Las giras por Estados Unidos se acabaron y el equipo de Gerardo Martino deja muchísimas dudas de cara a la gira final por Girona, tras caer ante Colombia por 2-3, en un duelo que México ganaba con comodidad y que no supo manejar.', 'Claro'),
 	(7, 'https://www.youtube.com/embed/QXt21aGi_nQ', 'Costa Rica (ICT) | Promoción turística internacional', 'Campaña en Costa Rica "Vamos a A Turistear :¿A vos qué te falta sentir por primera vez?" www.vamosaturistear.com', 'ITC'),
@@ -76,7 +80,7 @@ insert into video(category_id, video_source, name, description, author) values
 	(13, 'https://www.youtube.com/embed/ra0QjuGlk7Y', 'Versión Completa. “La educación es un arma muy importante para la autoestima”. Dr. Valentín Fuster', 'Valentín Fuster Carulla es internacionalmente reconocido como uno de los médicos y promotores de la educación de la salud más prestigiosos del mundo.', 'Aprendemos Juntos 2030'),
 	(14, 'https://www.youtube.com/embed/iW9hp_Y-PdU', 'SCIENCE AND TECHNOLOGY: What are they and what are their DIFFERENCES? (with EXAMPLES)', 'Science and technology; we explain what they consist of, their characteristics, their differences and we give several examples.', 'Lifeder Education');
 
-insert into user(username, password, email, name) values
-	('joelm', 'Joel123#', 'joelm.01@gmail.com', 'Joel Mora'),
-	('carlosmp', 'Carlos123#', 'carlos.01@gmail.com', 'Carlos Meneses'),
-	('pablot5', 'Pablito123#', 'pablo_lolo@gmail.com', 'Pablo Lopez');
+insert into streaming_user(username, password, active, roles, permissions, email, name, surname) values
+('joelm', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'joelm.01@gmail.com', 'Joel', 'Mora'),
+('carlosmp', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'carlos.01@gmail.com', 'Carlos', 'Meneses'),
+('pablot5', '$2a$12$6jU0vpw1bEzRdf7kcD8TAu9dj6DuXocjCASdB2FitgmzCN2z5nK2m', 1, 'ADMIN', 'ADMIN', 'pablo_lolo@gmail.com', 'Pablo', 'Lopez');
