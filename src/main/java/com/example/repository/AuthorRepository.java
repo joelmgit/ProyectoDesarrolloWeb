@@ -4,21 +4,15 @@
  */
 package com.example.repository;
 
-import com.example.entity.Category;
-import com.example.entity.Video;
-import java.util.List;
+import com.example.entity.Author;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Joel Mora
+ * @author joelm
  */
 @Repository
-public interface VideoRepository extends CrudRepository<Video,Long> {
-    public List<Video> findByCategoryId(long id);
-   
+public interface AuthorRepository extends CrudRepository<Author,Long> {
 }

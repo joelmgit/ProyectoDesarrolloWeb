@@ -6,26 +6,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="plantilla/template::head"/>
     <body>
-        <header th:replace="plantilla/template::header"/>   
-        <div class="container py-5">     
+        <header th:replace="plantilla/template::header"/>
+        <div class="container py-5">
             <div class="container">
                 <div class="row">
                   <div class="col-9">
+                  <div class="my-5 p-4 border border-secondary rounded" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <p class="p" th:text="#{video.administrationOptionsTitle}"/>
+                        <a class="btn btn-outline-primary " th:href="@{/edit-video/{id}(id=${video.getId})}" role="button" th:text="#{video.editVideoButton}"/>
+                        <a class="btn btn-outline-danger mx-2" th:href="@{/delete-video/{id}(id=${video.getId})}" role="button" th:text="#{video.deleteVideoButton}"/>
+                  </div>
                     <div class="ratio ratio-16x9">
                         <iframe class="embed-responsive-item" th:src="${video.getVideo_source}" allowfullscreen></iframe>
                     </div>
                     <div class="my-4">
-                        <p class="h2" th:text="${video.getName}"/>  
+                        <p class="h2" th:text="${video.getName}"/>
                         <div class=" container my-4 p-4 text-bg-dark rounded">
-                            <p class="p" th:text="#{video.author_title} + ': ' + ${video.getAuthor}"/>  
-                            <p class="p" th:text="#{video.description_title} + ': ' + ${video.getDescription}"/>  
-                            <p class="p" th:text="#{video.category_title} + ': ' + ${video.getCategory.getName}"/>  
+                            <p class="p" th:text="#{video.author_title} + ': ' + ${video.getAuthor}"/>
+                            <p class="p" th:text="#{video.description_title} + ': ' + ${video.getDescription}"/>
+                            <p class="p" th:text="#{video.category_title} + ': ' + ${video.getCategory.getName}"/>
                         </div>
-                        
+
                     </div>
                   </div>
                   <div class="col-3">
-                    <p class="h1" th:text="#{video.related_category_title}"/>         
+                    <p class="h1" th:text="#{video.related_category_title}"/>
                     <div class="list-group col-md" th:each="video : ${relatedVideosList}">
                         <a th:href="@{/video/{id}(id=${video.getId})}" class="list-group-item list-group-item-action p-4 my-2" aria-current="true">
                             <div class="d-flex w-100 justify-content-between">
@@ -35,12 +40,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <p class="mb-1" th:text="${(video.getDescription.length > 100) ? video.getDescription.substring(0,100) + '...' : video.getDescription}"/>
                             <small th:text="${video.getAuthor}"></small>
                         </a>
-                    </div>   
+                    </div>
                   </div>
                 </div>
-            </div>                               
-        </div>         
-        <footer th:replace="plantilla/template::footer"/>   
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+            </div>
+        </div>
+        <footer th:replace="plantilla/template::footer"/>
     </body>
 </html>

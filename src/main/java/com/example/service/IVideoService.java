@@ -19,4 +19,5 @@ public interface IVideoService {
     public List<Video> getVideosByCategory(long id);
     public void saveVideo(Video video);
     public void deleteVideo(long id);
+    public void updateVideo(Video video);
 }

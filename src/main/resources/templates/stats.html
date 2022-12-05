@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="plantilla/template::head"/>
+    <body>
+        <header th:replace="plantilla/template::header"/>
+        <div>Stats</div>
+        <p>VIDEO STATS</p>
+        <div class="list-group col-md" th:each="videoStats : ${videoStatsList}">
+            <p th:text="${videoStats.getCategoryName}" />
+            <p th:text="${videoStats.getRelativeCount}" />
+        </div>
+        <p>USER STATS</p>
+        <div class="list-group col-md" th:each="userStats : ${userStatsList}">
+            <p th:text="${userStats.getRoleName}" />
+            <p th:text="${userStats.getRelativeCount}" />
+        </div>
+        <footer th:replace="plantilla/template::footer"/>
+    </body>
+</html>

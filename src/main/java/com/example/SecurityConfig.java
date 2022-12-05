@@ -54,10 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/", "/contact", "/login")
+        .antMatchers("/contact")
+        .permitAll()
+        .and()
+        .authorizeRequests()
+        .antMatchers("/add-video", "/edit-video/{id}", "/save", "/delete-video/{id}")
         .hasRole("ADMIN")
-        .antMatchers("/", "/contact", "/video/{videoId}", "/categories/{id}", "/add-video", "/edit-video/{id}", "/save", "/delete-video/{id}")
-        .hasAnyRole("USER", "VENDEDOR", "ADMIN")
+        .antMatchers("/", "/video/{videoId}", "/categories/{id}")
+        .hasAnyRole("USER", "ADMIN")
         .anyRequest().authenticated()
         .and()
         .formLogin()

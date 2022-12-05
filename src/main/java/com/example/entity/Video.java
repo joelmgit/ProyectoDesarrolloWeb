@@ -23,12 +23,16 @@ public class Video implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     private String name;
     private String video_source;
     private String description;
-    private String author;
     
+//    @ManyToOne
+//    @JoinColumn(name="author_id")
+//    private Author author;
+    private String author;
+
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
@@ -79,5 +83,5 @@ public class Video implements Serializable{
 
     public void setCategory(Category category) {
         this.category = category;
-    }           
+    }
 }

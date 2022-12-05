@@ -3,7 +3,9 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/extras/spring-security"
+>
     <head th:replace="plantilla/template::head"/>
     <body>
         <header th:replace="plantilla/template::header"/>
@@ -13,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                   <div class="col-9">
                     <p class="h1" th:text="#{videos.title}"/>
                   </div>
-                  <div class="col-3">
+                  <div class="col-3" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a class="btn btn-primary px-5" href="/add-video" role="button" th:text="#{videos.add_video}"/>
                   </div>
                 </div>
