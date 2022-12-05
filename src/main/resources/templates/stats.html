@@ -7,16 +7,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head th:replace="plantilla/template::head"/>
     <body>
         <header th:replace="plantilla/template::header"/>
-        <div>Stats</div>
-        <p>VIDEO STATS</p>
-        <div class="list-group col-md" th:each="videoStats : ${videoStatsList}">
-            <p th:text="${videoStats.getCategoryName}" />
-            <p th:text="${videoStats.getRelativeCount}" />
-        </div>
-        <p>USER STATS</p>
-        <div class="list-group col-md" th:each="userStats : ${userStatsList}">
-            <p th:text="${userStats.getRoleName}" />
-            <p th:text="${userStats.getRelativeCount}" />
+        <div class="container my-5">
+            <p class="h1 mb-4" th:text="#{stats.video_stats_title}"></p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" th:text="#{stats.category}"></th>
+                        <th scope="col" th:text="#{stats.video_count}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="videoStat : ${videoStatsList}">
+                        <tr>
+                            <td th:text="${videoStat.getCategoryName}"></td>
+                            <td th:text="${videoStat.getRelativeCount}"></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+            <p class="h1 mt-5 mb-4" th:text="#{stats.user_stats_title}"></p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" th:text="#{stats.users_role}"></th>
+                        <th scope="col" th:text="#{stats.users_count}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="userStat : ${userStatsList}">
+                        <tr>
+                            <td th:text="${userStat.getRoleName}"></td>
+                            <td th:text="${userStat.getRelativeCount}"></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
         </div>
         <footer th:replace="plantilla/template::footer"/>
     </body>

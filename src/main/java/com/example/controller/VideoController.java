@@ -12,6 +12,7 @@ import com.example.service.ICategoryService;
 import com.example.service.IVideoService;
 import com.example.service.IVideoStatsService;
 import com.example.service.IUserStatsService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,10 +31,10 @@ public class VideoController {
 
     @Autowired
     private ICategoryService categoryService;
-    
+
     @Autowired
     private IVideoStatsService videoStatsService;
-    
+
     @Autowired
     private IUserStatsService userStatsService;
 
@@ -90,6 +91,8 @@ public class VideoController {
     public String videosStats(Model model){
         List<VideoStats> videosStats = videoStatsService.getAllVideoStats();
         List<UserStats> userStats = userStatsService.getAllUserStats();
+
+
         model.addAttribute("videoStatsList", videosStats);
         model.addAttribute("userStatsList", userStats);
         return "stats";

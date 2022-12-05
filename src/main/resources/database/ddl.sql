@@ -30,11 +30,6 @@ create table streaming_user(
 	surname varchar(100) not null
 );
 
-create table roles_tbl(
-	id int not null primary key auto_increment,
-	roles varchar(100) not null
-);
-
 insert into category (name) values
 	('Peliculas'),
 	('Animación'),
@@ -93,11 +88,11 @@ insert into streaming_user(username, password, active, roles, permissions, email
 insert into roles_tbl(roles) values ('ADMIN'), ('USER');
 
 -- VISTA ESTADISTICAS DE VIDEO
-create view statistics_video as 
+create view statistics_video as
 select c.id as id, count(v.id) as relative_count, c.name as category_name from video v inner join category c on v.category_id = c.id group by v.category_id;
 
 
 -- VISTA ESTADISTICAS DE USUARIO
-create view statistics_user as 
+create view statistics_user as
 select r.id as id, count(u.id) as relative_count, r.roles as role_name from streaming_user u inner join roles_tbl r on u.roles = r.roles group by r.id;
 
