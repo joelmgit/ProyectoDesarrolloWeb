@@ -30,10 +30,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <a class="nav-link" aria-current="page" href="/stats" th:text="#{skeleton.stats}"/>
                       </li>
                       <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
-                        <a class="nav-link" href="#" th:text="#{skeleton.subscribe}"/>
+                        <a class="nav-link" href="addPremium" th:text="#{skeleton.subscribe}"/>
                       </li>
                       <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
-                        <a class="nav-link" href="#" th:text="#{skeleton.premium}"/>
+                        <a class="nav-link" href="addSuscripcion" th:text="#{skeleton.premium}"/>
                       </li>
                       <li class="nav-item" sec:authorize="${!isAuthenticated() || hasRole('ROLE_USER')}">
                         <a class="nav-link" href="/contact" th:text="#{skeleton.contact}"/>

@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll()
         .and()
         .authorizeRequests()
-        .antMatchers("/add-video", "/edit-video/{id}", "/save", "/delete-video/{id}")
+        .antMatchers("/add-video", "/edit-video/{id}", "/save", "/delete-video/{id}","/addPremium","/addSuscripcion")
         .hasRole("ADMIN")
         .antMatchers("/", "/video/{videoId}", "/categories/{id}")
         .hasAnyRole("USER", "ADMIN")

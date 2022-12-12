@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="plantilla/template::head"/>
+    <body>
+        <header th:replace="plantilla/template::header"/>
+                <div class="container my-5">
+            <p class="h1" th:text="#{add_premium.functionality}"></p>
+            <form
+                class="my-5"
+                th:object = "${premium}"
+                th:action="@{/savepremium}"
+                method="POST"
+            >
+                <div class="mb-3">
+                    <label for="nombre" class="form-label" th:text="#{add_Premium.Name}"/>
+                    <input th:field="*{nombre}" type="text" class="form-control" id="nombre">
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary mt-4" th:text="#{add_premium.functionality}"/>
+            </form>
+        </div>
+        <footer th:replace="plantilla/template::footer"/>
+        </body>
+</html>
