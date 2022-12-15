@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="plantilla/template::head"/>
+    <body>
+        <header th:replace="plantilla/template::header"/>
+        <div class="container my-5">
+            <p class="h1 mb-4" th:text="#{suscripcion_title}"></p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" th:text="#{add_Suscripcion.Name}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="user : ${suscripcionList}">
+                        <tr>
+                            <td th:text="${user.getUser}"></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+            
+        </div>
+        <footer th:replace="plantilla/template::footer"/>
+    </body>
+</html>
